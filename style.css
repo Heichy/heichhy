@@ -7,19 +7,26 @@
     font-family:'Poppins',sans-serif;
 }
 
-html,body{
+html,
+body{
     width:100%;
-    height:100%;
-    overflow:hidden;
+    min-height:100%;
+    margin:0;
+    padding:0;
+    background:#000;
+    overflow-x:hidden;
+    overscroll-behavior-y:none;
 }
-
 /* Background */
 
-.wrapper{
-    position:relative;
+.bg-video{
+    position:fixed;
+    inset:0;
     width:100%;
-    height:100vh;
-    overflow:hidden;
+    height:100%;
+    object-fit:cover;
+    z-index:-2;
+    pointer-events:none;
 }
 
 .bg-video{
@@ -239,13 +246,22 @@ html,body{
 
 @media (max-width:768px){
 
-    html,body{
-        overflow:auto;
+    html,
+    body{
+        width:100%;
+        height:100%;
+        overflow:hidden;
+        overscroll-behavior:none;
+        background:#000;
     }
 
     .wrapper{
-        height:auto;
-        min-height:100vh;
+        width:100%;
+        height:100vh;
+        height:100dvh;
+        min-height:100dvh;
+        overflow:hidden;
+        background:#000;
     }
 
     .navbar{
@@ -258,10 +274,11 @@ html,body{
     }
 
     .center{
-        position:relative;
-        top:90px;
-        left:0;
-        transform:none;
+        position:absolute;
+        top:50%;
+        left:50%;
+        transform:translate(-50%, -50%);
+        width:100%;
         padding:20px;
     }
 
@@ -289,7 +306,6 @@ html,body{
         font-size:15px;
     }
 
-    /* Sound stays bottom-right */
     .music-controls{
         right:15px;
         bottom:15px;
