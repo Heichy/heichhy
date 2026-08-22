@@ -24,37 +24,46 @@
     </ul>
   </nav>
 
-  <!-- Hero -->
-  <div class="center">
-    <div class="profile-card">
+  <!-- Main Content -->
+  <main class="center">
+    <section class="profile-card">
 
       <img src="pfp.jpg" class="pfp" alt="Profile Picture">
 
       <h1>𝕐𝕦𝕚?</h1>
 
       <div class="buttons">
-        <a href="https://open.spotify.com/user/31cbij2zok3x3uzok4t6l35csyya" target="_blank" class="btn">
+        <a href="https://open.spotify.com/user/31cbij2zok3x3uzok4t6l35csyya"
+           target="_blank"
+           class="btn">
           Spotify
         </a>
 
-        <a href="https://www.instagram.com/yumechyyy/" target="_blank" class="btn">
+        <a href="https://www.instagram.com/yumechyyy/"
+           target="_blank"
+           class="btn">
           Instagram
         </a>
       </div>
 
-    </div>
-  </div>
+    </section>
+  </main>
 
 </div>
 
-<!-- Music -->
+<!-- Background Music -->
 <audio id="bgm" loop>
   <source src="music.mp3" type="audio/mpeg">
 </audio>
 
-<!-- Volume -->
+<!-- Music Controls -->
 <div class="music-controls">
-  <button id="muteBtn">🔊</button>
+  <button id="muteBtn">
+  <svg id="speakerIcon" width="18" height="18" viewBox="0 0 24 24" fill="#FF4FD8">
+    <path d="M14 3.23v17.54c0 .51-.58.8-.99.49L7.91 17H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h3.91l5.1-4.26c.41-.31.99-.02.99.49z"/>
+    <path d="M16.5 8.5a1 1 0 0 1 1.41 0 5 5 0 0 1 0 7.07 1 1 0 1 1-1.41-1.41 3 3 0 0 0 0-4.24 1 1 0 0 1 0-1.42z"/>
+  </svg>
+</button>
   <input type="range" id="volume" min="0" max="100" value="35">
 </div>
 
@@ -62,6 +71,7 @@
 const bgm = document.getElementById("bgm");
 const volume = document.getElementById("volume");
 const muteBtn = document.getElementById("muteBtn");
+const speakerIcon = document.getElementById("speakerIcon");
 
 bgm.volume = 0.35;
 
@@ -72,13 +82,29 @@ document.addEventListener("click", () => {
 volume.addEventListener("input", () => {
     bgm.volume = volume.value / 100;
     bgm.muted = bgm.volume === 0;
-    muteBtn.textContent = bgm.muted ? "🔇" : "🔊";
+    updateIcon();
 });
 
 muteBtn.addEventListener("click", () => {
     bgm.muted = !bgm.muted;
-    muteBtn.textContent = bgm.muted ? "🔇" : "🔊";
+    updateIcon();
 });
+
+function updateIcon() {
+    if (bgm.muted) {
+        speakerIcon.innerHTML = `
+            <path d="M14 3.23v17.54c0 .51-.58.8-.99.49L7.91 17H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h3.91l5.1-4.26c.41-.31.99-.02.99.49z"/>
+            <line x1="4" y1="4" x2="20" y2="20" stroke="#FF4FD8" stroke-width="2" stroke-linecap="round"/>
+        `;
+    } else {
+        speakerIcon.innerHTML = `
+            <path d="M14 3.23v17.54c0 .51-.58.8-.99.49L7.91 17H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h3.91l5.1-4.26c.41-.31.99-.02.99.49z"/>
+            <path d="M16.5 8.5a1 1 0 0 1 1.41 0 5 5 0 0 1 0 7.07 1 1 0 1 1-1.41-1.41 3 3 0 0 0 0-4.24 1 1 0 0 1 0-1.42z"/>
+        `;
+    }
+}
+
+updateIcon();
 </script>
 
 </body>
