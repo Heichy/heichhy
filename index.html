@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HEICHYY</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="wrapper">
+
+  <!-- Background Video -->
+  <video class="bg-video" autoplay muted loop playsinline>
+    <source src="bg.mp4" type="video/mp4">
+  </video>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <img src="logo.png" class="logo" alt="HEICHYY">
+
+    <ul>
+      <li><a class="active" href="#">Home</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero -->
+  <div class="center">
+    <div class="profile-card">
+
+      <img src="pfp.jpg" class="pfp" alt="Profile Picture">
+
+      <h1>𝕐𝕦𝕚?</h1>
+
+      <div class="buttons">
+        <a href="https://open.spotify.com/user/31cbij2zok3x3uzok4t6l35csyya" target="_blank" class="btn">
+          Spotify
+        </a>
+
+        <a href="https://www.instagram.com/yumechyyy/" target="_blank" class="btn">
+          Instagram
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<!-- Music -->
+<audio id="bgm" loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<!-- Volume -->
+<div class="music-controls">
+  <button id="muteBtn">🔊</button>
+  <input type="range" id="volume" min="0" max="100" value="35">
+</div>
+
+<script>
+const bgm = document.getElementById("bgm");
+const volume = document.getElementById("volume");
+const muteBtn = document.getElementById("muteBtn");
+
+bgm.volume = 0.35;
+
+document.addEventListener("click", () => {
+    bgm.play().catch(() => {});
+}, { once: true });
+
+volume.addEventListener("input", () => {
+    bgm.volume = volume.value / 100;
+    bgm.muted = bgm.volume === 0;
+    muteBtn.textContent = bgm.muted ? "🔇" : "🔊";
+});
+
+muteBtn.addEventListener("click", () => {
+    bgm.muted = !bgm.muted;
+    muteBtn.textContent = bgm.muted ? "🔇" : "🔊";
+});
+</script>
+
+</body>
+</html>

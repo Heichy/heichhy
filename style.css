@@ -1,0 +1,237 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+html,body{
+    width:100%;
+    height:100%;
+    overflow:hidden;
+}
+
+/* Background */
+
+.wrapper{
+    position:relative;
+    width:100%;
+    height:100vh;
+    overflow:hidden;
+}
+
+.bg-video{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    z-index:-2;
+}
+
+.wrapper::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,.35);
+    z-index:-1;
+}
+
+/* Navbar */
+
+.navbar{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:80px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:0 50px;
+    background:rgba(0,0,0,.25);
+    backdrop-filter:blur(12px);
+    z-index:1000;
+}
+
+.logo{
+    width:150px;
+    height:auto;
+}
+
+.navbar ul{
+    list-style:none;
+}
+
+.navbar a{
+    color:#fff;
+    text-decoration:none;
+    background:#FF4FD8;
+    padding:10px 18px;
+    border-radius:8px;
+    font-weight:700;
+    transition:.25s;
+}
+
+.navbar a:hover{
+    background:#FF2BCB;
+    box-shadow:0 0 18px rgba(255,79,216,.45);
+}
+
+/* Center */
+
+.center{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+}
+
+/* Glass Card */
+
+.profile-card{
+    width:520px;
+    padding:40px 35px;
+    text-align:center;
+
+    background:rgba(0,0,0,.15);
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
+
+    border:1px solid rgba(255,79,216,.35);
+    border-radius:28px;
+
+    box-shadow:
+        0 0 25px rgba(255,79,216,.12),
+        inset 0 0 15px rgba(255,255,255,.02);
+}
+
+/* Profile Picture */
+
+.pfp{
+    width:180px;
+    height:180px;
+    border-radius:50%;
+    object-fit:cover;
+    display:block;
+    margin:0 auto 22px;
+
+    border:3px solid #FF4FD8;
+
+    box-shadow:
+        0 0 8px #FF4FD8,
+        0 0 18px #FF4FD8,
+        0 0 35px rgba(255,79,216,.8),
+        0 0 55px rgba(255,79,216,.45);
+}
+
+/* Title */
+
+.center h1{
+    font-size:72px;
+    font-weight:800;
+    color:#FF4FD8;
+    line-height:1;
+
+    text-shadow:
+        0 0 10px rgba(255,79,216,.7),
+        0 0 28px rgba(255,79,216,.5);
+}
+
+/* Buttons */
+
+.buttons{
+    margin-top:30px;
+    display:flex;
+    justify-content:center;
+    gap:18px;
+}
+
+.btn{
+    width:170px;
+    height:50px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:#FF4FD8;
+    color:#fff;
+    text-decoration:none;
+    font-size:16px;
+    font-weight:700;
+
+    border-radius:999px;
+    transition:.25s;
+
+    box-shadow:
+        0 0 12px rgba(255,79,216,.45),
+        0 0 25px rgba(255,79,216,.25);
+}
+
+.btn:hover{
+    background:#FF2BCB;
+    transform:translateY(-2px) scale(1.05);
+
+    box-shadow:
+        0 0 18px rgba(255,79,216,.7),
+        0 0 35px rgba(255,79,216,.45);
+}
+
+/* Music */
+
+.music-controls{
+    position:fixed;
+    right:25px;
+    bottom:25px;
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:10px 14px;
+
+    background:rgba(0,0,0,.35);
+    backdrop-filter:blur(18px);
+
+    border-radius:999px;
+    border:1px solid rgba(255,255,255,.08);
+    z-index:1000;
+}
+
+.music-controls button{
+    width:36px;
+    height:36px;
+    border:none;
+    border-radius:50%;
+    background:transparent;
+    color:#fff;
+    font-size:16px;
+    cursor:pointer;
+}
+
+.music-controls button:hover{
+    background:rgba(255,255,255,.12);
+}
+
+#volume{
+    width:100px;
+    appearance:none;
+    background:transparent;
+    cursor:pointer;
+}
+
+#volume::-webkit-slider-runnable-track{
+    height:4px;
+    background:rgba(255,255,255,.25);
+    border-radius:999px;
+}
+
+#volume::-webkit-slider-thumb{
+    appearance:none;
+    width:14px;
+    height:14px;
+    border-radius:50%;
+    background:#fff;
+    margin-top:-5px;
+}
